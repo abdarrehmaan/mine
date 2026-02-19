@@ -25,7 +25,7 @@ const About = () => {
 
   const stats = [
     { icon: Code, value: '50+', label: 'Projects Completed' },
-    { icon: Coffee, value: '5+', label: 'Years Experience' },
+    { icon: Coffee, value: '2+', label: 'Years Experience' },
     { icon: Users, value: '30+', label: 'Happy Clients' },
     { icon: Rocket, value: '100%', label: 'Commitment' },
   ];
@@ -85,7 +85,7 @@ const About = () => {
 
             <div className="space-y-4 text-silver leading-relaxed mb-8">
               <p>
-                With over 5 years of experience in full-stack development, I specialize in building
+                With over 2 years of experience in full-stack development, I specialize in building
                 scalable web applications and intuitive user interfaces. My journey in tech started
                 with a curiosity for how things work, which evolved into a passion for creating
                 elegant solutions to complex problems.

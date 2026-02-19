@@ -49,11 +49,10 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'bg-void/80 backdrop-blur-xl border-b border-white/5'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -63,7 +62,7 @@ const Navigation = () => {
               onClick={(e) => handleNavClick(e, '#hero')}
               className="font-display text-xl font-bold text-white hover:text-primary transition-colors"
             >
-              AC
+              AR
             </a>
 
             {/* Desktop navigation */}
@@ -73,11 +72,10 @@ const Navigation = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative text-sm font-medium transition-colors ${
-                    activeSection === link.href.replace('#', '')
+                  className={`relative text-sm font-medium transition-colors ${activeSection === link.href.replace('#', '')
                       ? 'text-white'
                       : 'text-silver hover:text-white'
-                  }`}
+                    }`}
                 >
                   {link.label}
                   {activeSection === link.href.replace('#', '') && (
@@ -116,9 +114,8 @@ const Navigation = () => {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
       >
         {/* Backdrop */}
         <div
@@ -133,11 +130,10 @@ const Navigation = () => {
               key={link.label}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`text-2xl font-display font-semibold transition-all duration-300 ${
-                activeSection === link.href.replace('#', '')
+              className={`text-2xl font-display font-semibold transition-all duration-300 ${activeSection === link.href.replace('#', '')
                   ? 'text-primary'
                   : 'text-white hover:text-primary'
-              }`}
+                }`}
               style={{
                 transitionDelay: `${index * 50}ms`,
                 transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',

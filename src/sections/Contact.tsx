@@ -35,14 +35,14 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
-    
+
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
@@ -227,11 +227,11 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
-                  <a 
-                    href="mailto:alex@example.com" 
+                  <a
+                    href="mailto:contact@abdurrahman.dev"
                     className="text-silver hover:text-primary transition-colors"
                   >
-                    alex@example.com
+                    contact@abdurrahman.dev
                   </a>
                 </div>
               </div>
@@ -273,7 +273,7 @@ const Contact = () => {
                 <span className="text-white font-medium">Available for Work</span>
               </div>
               <p className="text-silver text-sm">
-                I'm currently open to new opportunities and interesting projects. 
+                I'm currently open to new opportunities and interesting projects.
                 Let's discuss how we can work together.
               </p>
             </div>
