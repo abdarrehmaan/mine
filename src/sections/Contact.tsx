@@ -52,9 +52,9 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Github, href: 'https://github.com/abdarrehmaan', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/abdur-rahman-maqsood-110438259?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://twitter.com/abdarrehmaan', label: 'Twitter' },
   ];
 
   return (
@@ -228,10 +228,10 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
                   <a
-                    href="mailto:contact@abdurrahman.dev"
+                    href="mailto:abdul.arm67@gmail.com"
                     className="text-silver hover:text-primary transition-colors"
                   >
-                    contact@abdurrahman.dev
+                    abdul.arm67@gmail.com
                   </a>
                 </div>
               </div>
@@ -242,7 +242,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Location</h4>
-                  <p className="text-silver">San Francisco, CA</p>
+                  <p className="text-silver">Prayagraj IN</p>
                 </div>
               </div>
             </div>
