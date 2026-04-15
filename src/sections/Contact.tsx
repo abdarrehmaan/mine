@@ -1,13 +1,19 @@
-import { useEffect, useRef, useState, Suspense, lazy } from 'react';
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, CheckCircle } from 'lucide-react';
+import { useEffect, useRef, useState, Suspense, lazy, FormEvent, ChangeEvent } from 'react';
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, Phone, CheckCircle } from 'lucide-react';
 
 // Lazy load 3D component
 const ContactDecoration = lazy(() => import('../components/3d/ContactDecoration'));
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -32,7 +38,7 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -47,7 +53,7 @@ const Contact = () => {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -55,6 +61,7 @@ const Contact = () => {
     { icon: Github, href: 'https://github.com/abdarrehmaan', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/abdur-rahman-maqsood-110438259?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com/abdarrehmaan', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/abdarrehmaan', label: 'Instagram' },
   ];
 
   return (
@@ -243,6 +250,21 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Location</h4>
                   <p className="text-silver">Prayagraj IN</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold mb-1">Phone</h4>
+                  <a
+                    href="tel:+918601556641"
+                    className="text-silver hover:text-primary transition-colors"
+                  >
+                    +91 8601556641
+                  </a>
                 </div>
               </div>
             </div>
