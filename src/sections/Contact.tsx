@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import type { FormEvent, ChangeEvent } from 'react';
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, PhoneCall, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, PhoneCall, MessageCircle, CheckCircle } from 'lucide-react';
 
 // Lazy load 3D component
 const ContactDecoration = lazy(() => import('../components/3d/ContactDecoration'));
@@ -136,17 +136,30 @@ const Contact = () => {
           <div className="space-y-6">
 
             {/* Email */}
-            <div className="flex gap-4">
-              <Mail className="text-primary" />
-              <a href="mailto:abdul.arm67@gmail.com" className="text-silver hover:text-primary">
-                abdul.arm67@gmail.com
-              </a>
+            <div className="flex items-start gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                <Mail className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold mb-1">Email</h4>
+                <a
+                  href="mailto:abdul.arm67@gmail.com?subject=Hello%20Abdur&body=Hi%20Abdur%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20you."
+                  className="text-silver hover:text-primary transition-colors"
+                >
+                  abdul.arm67@gmail.com
+                </a>
+              </div>
             </div>
 
             {/* Location */}
-            <div className="flex gap-4">
-              <MapPin className="text-primary" />
-              <span className="text-silver">Prayagraj, India</span>
+            <div className="flex items-start gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                <MapPin className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold mb-1">Location</h4>
+                <span className="text-silver">Prayagraj, India</span>
+              </div>
             </div>
 
             {/* Phone */}
@@ -165,11 +178,36 @@ const Contact = () => {
               </div>
             </div>
 
+            {/* WhatsApp */}
+            <div className="flex items-start gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                <MessageCircle className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold mb-1">WhatsApp</h4>
+                <a
+                  href="https://wa.me/919473630937?text=Hello%20Abdur%2C%20I%20am%20interested%20in%20your%20services.%20Can%20we%20talk%20about%20a%20project%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-silver hover:text-primary transition-colors"
+                >
+                  +91 9473630937
+                </a>
+              </div>
+            </div>
+
             {/* Social */}
             <div className="flex gap-4 pt-4">
               {socialLinks.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
-                  <s.icon className="text-silver hover:text-primary" />
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
+                  aria-label={s.label}
+                >
+                  <s.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
