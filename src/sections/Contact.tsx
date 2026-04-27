@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState, Suspense, lazy, FormEvent, ChangeEvent } from 'react';
+import { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, Phone, CheckCircle } from 'lucide-react';
 
 // Lazy load 3D component
 const ContactDecoration = lazy(() => import('../components/3d/ContactDecoration'));
 
 interface ContactFormData {
-  name: string;
+  name: string;import { useEffect, useRef, useState, Suspense, lazy, FormEvent, ChangeEvent } from 'react';
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, Phone, CheckCircle } from 'lucide-react';
   email: string;
   message: string;
 }
