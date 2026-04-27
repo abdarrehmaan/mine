@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, Suspense, lazy, FormEvent, ChangeEvent } from 'react';
+import { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, Phone, CheckCircle } from 'lucide-react';
 
 // Lazy load 3D component
@@ -14,9 +15,7 @@ const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [show3D, setShow3D] = useState(false);
 
   useEffect(() => {
@@ -37,11 +36,9 @@ const Contact = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
 
