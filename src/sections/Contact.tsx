@@ -1,13 +1,19 @@
-import { useEffect, useRef, useState, Suspense, lazy } from 'react';
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, CheckCircle } from 'lucide-react';
+import { useEffect, useRef, useState, Suspense, lazy, FormEvent, ChangeEvent } from 'react';
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, CheckCircle, Phone } from 'lucide-react';
 
 // Lazy load 3D component
 const ContactDecoration = lazy(() => import('../components/3d/ContactDecoration'));
 
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -32,7 +38,7 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -47,8 +53,8 @@ const Contact = () => {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev: ContactFormData) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const socialLinks = [
@@ -243,6 +249,21 @@ const Contact = () => {
                 <div>
                   <h4 className="text-white font-semibold mb-1">Location</h4>
                   <p className="text-silver">Prayagraj IN</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <Phone className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold mb-1">Phone</h4>
+                  <a
+                    href="tel:+919473630937"
+                    className="text-silver hover:text-primary transition-colors"
+                  >
+                    +91 9473630937
+                  </a>
                 </div>
               </div>
             </div>
