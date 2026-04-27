@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import type { FormEvent, ChangeEvent } from 'react';
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, Phone, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, PhoneCall, CheckCircle } from 'lucide-react';
 
 // Lazy load 3D component
 const ContactDecoration = lazy(() => import('../components/3d/ContactDecoration'));
@@ -152,7 +152,7 @@ const Contact = () => {
             {/* Phone */}
             <div className="flex items-start gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Phone className="w-5 h-5 text-primary" />
+                <PhoneCall className="w-5 h-5 text-primary" />
               </div>
               <div>
                 <h4 className="text-white font-semibold mb-1">Phone</h4>
