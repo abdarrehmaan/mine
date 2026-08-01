@@ -39,12 +39,12 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with real-time inventory, payment processing, and admin dashboard. Built with React, Node.js, and PostgreSQL.',
-      image: '/images/project1.jpg',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Redis'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
+      title: 'PLT Creation',
+      description: "Discover PLT Creation's signature collection — where timeless craftsmanship meets modern grace. A full-featured luxury e-commerce platform for women's apparel with seamless shopping experience.",
+      image: '/images/pltcreation.jpg',
+      technologies: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Stripe'],
+      liveUrl: 'https://pltcreation.com',
+      githubUrl: 'https://pltcreation.com',
       featured: true,
     },
     {
@@ -147,7 +147,7 @@ const Projects = () => {
                   {/* Project image */}
                   <div className={`relative group transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ transitionDelay: `${index * 100}ms` }}>
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative overflow-hidden rounded-2xl border border-white/10">
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="block relative overflow-hidden rounded-2xl border border-white/10">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -177,7 +177,7 @@ const Projects = () => {
                           </a>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
 
                   {/* Project info */}
@@ -192,7 +192,9 @@ const Projects = () => {
                     </div>
                     
                     <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                      {project.title}
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        {project.title}
+                      </a>
                     </h3>
                     
                     <p className="text-silver leading-relaxed mb-6">

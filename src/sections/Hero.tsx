@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import { useEffect, useRef, useState, Suspense } from 'react';
 import { ArrowDown, Github, Linkedin, Twitter } from 'lucide-react';
-
-// Lazy load 3D component
-const FloatingShapes = lazy(() => import('../components/3d/FloatingShapes'));
+import FloatingShapes from '../components/3d/FloatingShapes';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const Hero = () => {
@@ -12,7 +10,7 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const fullName = 'Abdur Rahman';
   const [isLoaded, setIsLoaded] = useState(false);
-  const [show3D, setShow3D] = useState(false);
+  const [show3D, setShow3D] = useState(true);
 
   // Text decode animation
   useEffect(() => {
@@ -121,7 +119,17 @@ const Hero = () => {
 
           {/* Text content */}
           <div className={`text-center lg:text-left transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <p className="text-silver text-lg md:text-xl mb-4 font-light tracking-wide">
+            
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6 backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span>Available for projects & full-time roles</span>
+            </div>
+
+            <p className="text-silver text-lg md:text-xl mb-3 font-light tracking-wide">
               Hello, I'm
             </p>
 
@@ -131,57 +139,64 @@ const Hero = () => {
 
             <div className={`overflow-hidden transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
               <p className="text-2xl md:text-3xl lg:text-4xl text-primary font-display font-semibold mb-6">
-                Full Stack Developer
+                Full Stack Developer & Systems Architect
               </p>
             </div>
 
             <p className={`text-silver text-lg md:text-xl max-w-xl mb-8 leading-relaxed transition-all duration-700 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-              I build digital experiences that merge art with engineering.
-              Specializing in React, Node.js, and cloud architecture.
+              I build high-performance web applications, luxury e-commerce platforms, and scalable digital solutions that merge art with software engineering.
             </p>
 
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 transition-all duration-700 delay-900 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10 transition-all duration-700 delay-900 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
               <button
                 onClick={scrollToProjects}
-                className="btn-primary group flex items-center justify-center gap-2"
+                className="btn-primary group flex items-center justify-center gap-2 shadow-lg shadow-primary/30"
               >
-                <span>View My Work</span>
+                <span>Explore Featured Work</span>
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </button>
               <a
                 href="#contact"
-                className="px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 hover:border-primary/50 transition-all duration-300"
+                className="px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-sm text-center"
               >
                 Get In Touch
               </a>
             </div>
 
-            {/* Social links */}
-            <div className={`flex gap-4 justify-center lg:justify-start transition-all duration-700 delay-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+            {/* Social links & Tech stack preview */}
+            <div className={`flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start transition-all duration-700 delay-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="flex gap-3">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 shadow-md"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 shadow-md"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-silver hover:text-white hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 shadow-md"
+                >
+                  <Twitter className="w-5 h-5" />
+                </a>
+              </div>
+
+              <div className="h-6 w-px bg-white/10 hidden sm:block" />
+
+              <div className="flex items-center gap-2 text-xs text-silver/70 font-mono uppercase tracking-wider">
+                <span>React</span> • <span>Node</span> • <span>Next.js</span> • <span>TypeScript</span> • <span>Tailwind</span>
+              </div>
             </div>
           </div>
 

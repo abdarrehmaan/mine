@@ -221,7 +221,15 @@ const ContactDecoration = () => {
       <Canvas
         camera={{ position: [0, 0, 7], fov: 60 }}
         dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: true, 
+          alpha: true, 
+          failIfMajorPerformanceCaveat: false, 
+          powerPreference: 'high-performance' 
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
       >
         <Scene />
       </Canvas>

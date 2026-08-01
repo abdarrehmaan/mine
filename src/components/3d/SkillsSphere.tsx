@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text } from '@react-three/drei';
+import { Float, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface TechItem {
@@ -12,7 +12,6 @@ interface TechItem {
 // Individual Tech Node
 const TechNode = ({ tech, index }: { tech: TechItem; index: number }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const textRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -55,17 +54,12 @@ const TechNode = ({ tech, index }: { tech: TechItem; index: number }) => {
           />
         </mesh>
         
-        {/* Tech name */}
-        <Text
-          ref={textRef}
-          position={[0, -0.6, 0]}
-          fontSize={0.15}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-        >
-          {tech.name}
-        </Text>
+        {/* Tech name label */}
+        <Html position={[0, -0.55, 0]} center distanceFactor={8}>
+          <div className="px-2 py-0.5 rounded-md bg-void/90 border border-primary/40 text-white text-[11px] font-mono tracking-tight whitespace-nowrap shadow-lg select-none pointer-events-none">
+            {tech.name}
+          </div>
+        </Html>
       </group>
     </Float>
   );
@@ -210,7 +204,15 @@ const SkillsSphere = ({ technologies }: { technologies: string[] }) => {
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: true, 
+          alpha: true, 
+          failIfMajorPerformanceCaveat: false, 
+          powerPreference: 'high-performance' 
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
       >
         <Scene technologies={technologies} />
       </Canvas>

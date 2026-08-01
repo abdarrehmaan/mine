@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Floating Cube Component
@@ -115,36 +115,38 @@ const FloatingTorus = ({ position, color, speed }: { position: [number, number, 
   );
 };
 
-// Distorted Sphere - Main centerpiece
+// Centerpiece Geometry - 100% Compatible Standard WebGL
 const DistortedSphere = () => {
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.05;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.08;
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.15;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.2;
+      const scale = 1.3 + Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
+      meshRef.current.scale.set(scale, scale, scale);
     }
   });
 
   return (
     <Float
       speed={2}
-      rotationIntensity={0.3}
-      floatIntensity={0.5}
+      rotationIntensity={0.4}
+      floatIntensity={0.6}
     >
-      <Sphere ref={meshRef} args={[1.5, 64, 64]} position={[0, 0, -5]}>
-        <MeshDistortMaterial
+      <mesh ref={meshRef} position={[0, 0, -5]}>
+        <icosahedronGeometry args={[1.3, 2]} />
+        <meshStandardMaterial
           color="#2c2cff"
           transparent
-          opacity={0.3}
+          opacity={0.4}
           roughness={0.1}
           metalness={0.8}
-          distort={0.4}
-          speed={2}
           emissive="#2c2cff"
-          emissiveIntensity={0.2}
+          emissiveIntensity={0.3}
+          wireframe
         />
-      </Sphere>
+      </mesh>
     </Float>
   );
 };
@@ -224,11 +226,19 @@ const Scene = () => {
 // Main Component
 const FloatingShapes = () => {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         dpr={[1, 2]}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: true, 
+          alpha: true, 
+          failIfMajorPerformanceCaveat: false, 
+          powerPreference: 'high-performance' 
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
       >
         <Scene />
       </Canvas>
