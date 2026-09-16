@@ -72,9 +72,9 @@ export function queryPortfolioAI(query: string, previousContext?: string[]): AIR
 
   if (q.includes('go to experience') || q.includes('show experience') || q.includes('work history') || q.includes('career')) {
     return {
-      answer: "Navigating to the Professional Experience roadmap.",
-      action: { type: 'NAVIGATE', target: 'experience' },
-      suggestedFollowUps: ['What are your key contributions?', 'What roles are you seeking?'],
+      answer: "Navigating to the Projects catalog to showcase production engineering systems and shipped applications.",
+      action: { type: 'NAVIGATE', target: 'projects' },
+      suggestedFollowUps: ['Show me AlMeato mobile app', 'What technologies do you use?'],
     };
   }
 

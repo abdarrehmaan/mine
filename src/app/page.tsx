@@ -9,7 +9,6 @@ import { Hero } from '@/components/sections/Hero';
 import { RecruiterBanner } from '@/components/operating-system/RecruiterBanner';
 import { About } from '@/components/sections/About';
 import { Skills } from '@/components/sections/Skills';
-import { Experience } from '@/components/sections/Experience';
 import { FeaturedProject } from '@/components/sections/FeaturedProject';
 import { Projects } from '@/components/sections/Projects';
 import { LiveCodeLab } from '@/components/codelab/LiveCodeLab';
@@ -43,7 +42,6 @@ export default function Home() {
           <RecruiterBanner />
           <About />
           <Skills />
-          <Experience />
           <FeaturedProject />
           <Projects />
           <LiveCodeLab />

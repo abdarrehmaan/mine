@@ -20,7 +20,7 @@ import { useOS } from '@/context/OSContext';
 import { portfolioData } from '@/data/portfolioData';
 import { GlowingBadge } from '@/components/ui/GlowingBadge';
 
-const RESUME_TABS = ['Overview', 'Experience', 'Technical Skills', 'Featured Projects', 'Certifications'] as const;
+const RESUME_TABS = ['Overview', 'Technical Skills', 'Featured Projects', 'Certifications'] as const;
 
 export function InteractiveResumeModal() {
   const { isResumeModalOpen, setIsResumeModalOpen, setIsJobMatcherOpen } = useOS();
@@ -146,29 +146,6 @@ export function InteractiveResumeModal() {
                     ))}
                   </div>
                 </div>
-              </div>
-            )}
-
-            {activeTab === 'Experience' && (
-              <div className="space-y-6">
-                {portfolioData.experiences.map((exp) => (
-                  <div key={exp.id} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                      <h4 className="font-bold text-white text-base">{exp.position}</h4>
-                      <span className="font-mono text-xs text-cyan-400">{exp.duration}</span>
-                    </div>
-                    <div className="text-xs text-slate-400 font-mono">{exp.company} • {exp.location}</div>
-                    <p className="text-xs sm:text-sm text-slate-300">{exp.description}</p>
-                    <ul className="space-y-1.5 pt-2">
-                      {exp.contributions.map((c, cIdx) => (
-                        <li key={cIdx} className="text-xs text-slate-400 flex items-start gap-2">
-                          <span className="text-cyan-400">•</span>
-                          <span>{c}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
               </div>
             )}
 

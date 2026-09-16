@@ -67,14 +67,6 @@ export function CommandPalette() {
       action: () => triggerNavigation('skills'),
     },
     {
-      id: 'nav-experience',
-      label: 'Navigate to Experience Timeline',
-      category: 'Navigation',
-      keywords: ['experience', 'work', 'history', 'career', '/experience'],
-      icon: <Compass className="w-4 h-4 text-emerald-400" />,
-      action: () => triggerNavigation('experience'),
-    },
-    {
       id: 'nav-codelab',
       label: 'Open Live Code Lab',
       category: 'Navigation',

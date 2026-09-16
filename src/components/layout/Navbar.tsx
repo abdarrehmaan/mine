@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'codelab', label: 'Code Lab' },
   { id: 'achievements', label: 'Achievements' },
