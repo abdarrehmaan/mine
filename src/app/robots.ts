@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://example.com/sitemap.xml',
+    sitemap: 'https://abdurrahmanmaqsood.in/sitemap.xml',
   };
 }

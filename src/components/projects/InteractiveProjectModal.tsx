@@ -117,6 +117,18 @@ export function InteractiveProjectModal() {
             </div>
           </div>
 
+          {/* Optional Project Screenshot Banner */}
+          {selectedProject.image && (
+            <div className="relative w-full h-52 sm:h-64 mb-6 rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-xl">
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 via-transparent to-transparent pointer-events-none" />
+            </div>
+          )}
+
           {/* Title & Tagline */}
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
             {selectedProject.title}

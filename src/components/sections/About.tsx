@@ -74,18 +74,58 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Right Column: 3D Hologram profile object */}
+          {/* Right Column: Profile Card, Verified Credential & 3D Hologram */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-5 h-[340px] sm:h-[420px] w-full flex items-center justify-center relative"
+            className="lg:col-span-5 flex flex-col items-center justify-center relative space-y-6"
           >
-            <div className="w-full h-full">
-              <CanvasContainer fallbackLabel="3D HOLOGRAM" camera={{ position: [0, 0, 4.5], fov: 45 }}>
-                <HologramGeometry />
-              </CanvasContainer>
+            <div className="relative w-full max-w-sm rounded-3xl p-6 glass-panel border border-cyan-500/30 shadow-[0_0_40px_rgba(0,240,255,0.15)] group">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-cyan-400/60 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0">
+                  <img
+                    src="/images/profile.jpg"
+                    alt={portfolioData.personal.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900 animate-pulse" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
+                    {portfolioData.personal.name}
+                  </h3>
+                  <p className="text-xs font-mono text-cyan-300 truncate">
+                    {portfolioData.personal.title}
+                  </p>
+                  <p className="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
+                    <span>📍 {portfolioData.personal.location}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Education & Academic Credential Badge */}
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1 mb-4">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-white flex items-center gap-1.5">
+                    <span>🎓 Bachelor of Technology</span>
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-[10px] font-mono">
+                    Graduated
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                  Dr. A.P.J. Abdul Kalam Technical University
+                </p>
+              </div>
+
+              {/* 3D Holographic Core Viewport */}
+              <div className="h-44 w-full relative rounded-2xl overflow-hidden bg-black/40 border border-white/5">
+                <CanvasContainer fallbackLabel="3D HOLOGRAM" camera={{ position: [0, 0, 4.5], fov: 45 }}>
+                  <HologramGeometry />
+                </CanvasContainer>
+              </div>
             </div>
           </motion.div>
         </div>

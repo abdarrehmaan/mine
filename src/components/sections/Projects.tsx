@@ -135,6 +135,19 @@ export function Projects() {
                         </div>
                       </div>
 
+                      {/* Project Image Preview */}
+                      {project.image && (
+                        <div className="relative w-full h-44 mb-4 rounded-xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-cyan-500/40 transition-colors">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 via-transparent to-transparent pointer-events-none" />
+                        </div>
+                      )}
+
                       {/* Title */}
                       <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors flex items-center justify-between">
                         <span>{project.title}</span>
