@@ -140,9 +140,9 @@ export function Skills() {
 
         {viewMode === '3d' ? (
           /* 3D Skill Universe Container */
-          <div className="relative w-full h-[480px] sm:h-[580px] rounded-3xl border border-white/10 bg-white/[0.01] backdrop-blur-sm overflow-hidden flex items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-            <div className="absolute top-4 left-4 font-mono text-[10px] text-cyan-400/80 uppercase tracking-widest pointer-events-none">
-              ORBITAL KNOWLEDGE LATTICE // CLICK NODE TO FILTER PROJECTS
+          <div className="relative w-full h-[340px] sm:h-[480px] md:h-[580px] rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.01] backdrop-blur-sm overflow-hidden flex items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 font-mono text-[9px] sm:text-[10px] text-cyan-400/80 uppercase tracking-widest pointer-events-none">
+              ORBITAL KNOWLEDGE LATTICE // CLICK NODE TO FILTER
             </div>
             <div className="w-full h-full">
               <CanvasContainer fallbackLabel="3D SKILL UNIVERSE" camera={{ position: [0, 0, 5.8], fov: 45 }}>
@@ -154,7 +154,7 @@ export function Skills() {
           /* Matrix Grid View */
           <div>
             {/* Category Filter Tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+            <div className="flex overflow-x-auto no-scrollbar gap-2 mb-8 sm:mb-12 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
               {CATEGORIES.map((category) => {
                 const isSelected = selectedCategory === category;
                 return (
@@ -162,7 +162,7 @@ export function Skills() {
                     key={category}
                     type="button"
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border ${
+                    className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border flex-shrink-0 active:scale-95 ${
                       isSelected
                         ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.2)]'
                         : 'bg-white/[0.03] text-slate-400 border-white/5 hover:text-white hover:bg-white/[0.06]'
@@ -177,7 +177,7 @@ export function Skills() {
             {/* Interactive 3D Tilt Skill Cards Grid */}
             <motion.div
               layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5"
             >
               <AnimatePresence mode="popLayout">
                 {filteredSkills.map((skill) => (

@@ -38,6 +38,18 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -49,26 +61,26 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'py-2.5 bg-[#050508]/85 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]'
-            : 'py-4 bg-transparent'
+            ? 'py-2 sm:py-2.5 bg-[#050508]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]'
+            : 'py-3 sm:py-4 bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             {/* Brand Logo */}
             <a
               href="#hero"
               onClick={(e) => scrollToSection(e, 'hero')}
-              className="flex items-center gap-2.5 group shrink-0"
+              className="flex items-center gap-2 sm:gap-2.5 group shrink-0 min-w-0"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-transparent border border-cyan-500/40 flex items-center justify-center transition-transform group-hover:scale-105 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-transparent border border-cyan-500/40 flex items-center justify-center transition-transform group-hover:scale-105 shadow-[0_0_15px_rgba(0,240,255,0.2)] shrink-0">
                 <Sparkles className="w-4 h-4 text-cyan-400" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-mono text-sm font-bold text-white tracking-wider group-hover:text-cyan-400 transition-colors">
+              <div className="flex flex-col min-w-0">
+                <span className="font-mono text-xs sm:text-sm font-bold text-white tracking-wider group-hover:text-cyan-400 transition-colors truncate max-w-[140px] xs:max-w-[190px] sm:max-w-none">
                   {portfolioData.personal.name}
                 </span>
-                <span className="text-[10px] text-cyan-300/80 font-mono tracking-widest uppercase">
+                <span className="text-[9px] sm:text-[10px] text-cyan-300/80 font-mono tracking-widest uppercase truncate">
                   AI OS v2.0
                 </span>
               </div>

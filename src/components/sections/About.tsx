@@ -82,15 +82,15 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative space-y-6"
           >
-            <div className="relative w-full max-w-sm rounded-3xl p-6 glass-panel border border-cyan-500/30 shadow-[0_0_40px_rgba(0,240,255,0.15)] group">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-cyan-400/60 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0">
+            <div className="relative w-full max-w-sm rounded-3xl p-4 sm:p-6 glass-panel border border-cyan-500/30 shadow-[0_0_40px_rgba(0,240,255,0.15)] group">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4">
+                <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-cyan-400/60 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0">
                   <img
                     src="/images/profile.jpg"
                     alt={portfolioData.personal.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900 animate-pulse" />
+                  <span className="absolute bottom-1 right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-400 border-2 border-slate-900 animate-pulse" />
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-white text-base sm:text-lg tracking-tight truncate">
@@ -106,7 +106,7 @@ export function About() {
               </div>
 
               {/* Education & Academic Credential Badge */}
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1 mb-4">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1 mb-4">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-white flex items-center gap-1.5">
                     <span>🎓 Bachelor of Technology</span>
@@ -121,7 +121,7 @@ export function About() {
               </div>
 
               {/* 3D Holographic Core Viewport */}
-              <div className="h-44 w-full relative rounded-2xl overflow-hidden bg-black/40 border border-white/5">
+              <div className="h-36 sm:h-44 w-full relative rounded-2xl overflow-hidden bg-black/40 border border-white/5">
                 <CanvasContainer fallbackLabel="3D HOLOGRAM" camera={{ position: [0, 0, 4.5], fov: 45 }}>
                   <HologramGeometry />
                 </CanvasContainer>
@@ -136,26 +136,26 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 pt-2 sm:pt-4"
         >
-          {portfolioData.stats.map((stat, idx) => (
+          {portfolioData.stats.map((stat) => (
             <TiltCard key={stat.id} maxTilt={6} className="h-full">
-              <div className="p-6 rounded-2xl glass-panel glass-panel-hover h-full flex flex-col justify-between">
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-mono">
+              <div className="p-4 sm:p-6 rounded-2xl glass-panel glass-panel-hover h-full flex flex-col justify-between">
+                <div className="flex items-baseline gap-1 mb-1.5 sm:mb-2">
+                  <span className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-mono">
                     {stat.value}
                   </span>
-                  <span className="text-2xl sm:text-3xl font-bold text-cyan-400 font-mono">
+                  <span className="text-xl sm:text-3xl font-bold text-cyan-400 font-mono">
                     {stat.suffix}
                   </span>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-200 text-sm sm:text-base mb-1">
+                  <h4 className="font-semibold text-slate-200 text-xs sm:text-base mb-1">
                     {stat.label}
                   </h4>
                   {stat.description && (
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed line-clamp-2">
                       {stat.description}
                     </p>
                   )}

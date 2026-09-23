@@ -45,7 +45,7 @@ export function Hero() {
             </GlowingBadge>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.15] sm:leading-[1.1]">
               Building{' '}
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
                 Intelligent
@@ -54,52 +54,54 @@ export function Hero() {
             </h1>
 
             {/* Supporting Subheadline */}
-            <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
               {portfolioData.personal.subheadline}
             </p>
 
             {/* Interactive Primary CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
+            <div className="grid grid-cols-1 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
               {/* Talk to AI Button */}
               <button
                 type="button"
                 onClick={() => setIsAIModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm tracking-wide text-black bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-white transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.4)] hover:shadow-[0_0_35px_rgba(0,240,255,0.7)] group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl font-semibold text-xs sm:text-sm tracking-wide text-black bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-white transition-all duration-300 shadow-[0_0_25px_rgba(0,240,255,0.4)] hover:shadow-[0_0_35px_rgba(0,240,255,0.7)] group cursor-pointer active:scale-95"
               >
                 <Bot className="w-4 h-4 text-black" />
                 <span>Talk to My AI</span>
                 <Sparkles className="w-3.5 h-3.5 text-black" />
               </button>
 
-              {/* Voice Mode Button */}
-              <button
-                type="button"
-                onClick={() => setIsVoiceActive(true)}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl font-semibold font-mono text-sm tracking-wide text-emerald-300 bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/40 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-                title="Launch Voice Mode"
-              >
-                <Mic className="w-4 h-4 text-emerald-400" />
-                <span>Voice</span>
-              </button>
+              <div className="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+                {/* Voice Mode Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsVoiceActive(true)}
+                  className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl font-semibold font-mono text-xs sm:text-sm tracking-wide text-emerald-300 bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/40 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)] active:scale-95"
+                  title="Launch Voice Mode"
+                >
+                  <Mic className="w-4 h-4 text-emerald-400" />
+                  <span>Voice</span>
+                </button>
+
+                {/* Explore Resume Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsResumeModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-5 py-3 sm:py-3.5 rounded-xl font-semibold font-mono text-xs sm:text-sm tracking-wide text-purple-300 bg-purple-950/30 hover:bg-purple-900/40 border border-purple-500/30 transition-all shadow-[0_0_15px_rgba(157,78,221,0.15)] active:scale-95"
+                >
+                  <FileText className="w-4 h-4 text-purple-400" />
+                  <span>Resume</span>
+                </button>
+              </div>
 
               {/* View Projects Link */}
               <button
                 type="button"
                 onClick={() => triggerNavigation('projects')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-semibold font-mono text-sm tracking-wide text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl font-semibold font-mono text-xs sm:text-sm tracking-wide text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 transition-all active:scale-95"
               >
                 <span>View Work</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
-              </button>
-
-              {/* Explore Resume Button */}
-              <button
-                type="button"
-                onClick={() => setIsResumeModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-semibold font-mono text-sm tracking-wide text-purple-300 bg-purple-950/30 hover:bg-purple-900/40 border border-purple-500/30 transition-all shadow-[0_0_15px_rgba(157,78,221,0.15)]"
-              >
-                <FileText className="w-4 h-4 text-purple-400" />
-                <span>Resume</span>
               </button>
             </div>
 
@@ -118,7 +120,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative h-[380px] sm:h-[450px] lg:h-[540px] w-full flex items-center justify-center"
+            className="lg:col-span-5 relative h-[280px] sm:h-[400px] lg:h-[540px] w-full flex items-center justify-center"
           >
             <div className="w-full h-full relative z-10">
               <CanvasContainer fallbackLabel="AI NEURAL CORE" camera={{ position: [0, 0, 5], fov: 45 }}>

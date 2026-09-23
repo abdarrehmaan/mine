@@ -77,7 +77,7 @@ export function ContactIntelligent() {
         />
 
         {/* Dynamic Goal Selection Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 mb-8 sm:mb-12 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
           {INQUIRY_TYPES.map((type) => {
             const isSelected = selectedType === type;
             return (
@@ -85,7 +85,7 @@ export function ContactIntelligent() {
                 key={type}
                 type="button"
                 onClick={() => setSelectedType(type)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border ${
+                className={`px-3.5 py-2 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border flex-shrink-0 active:scale-95 ${
                   isSelected
                     ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.2)]'
                     : 'bg-white/[0.03] text-slate-400 border-white/5 hover:text-white hover:bg-white/[0.06]'
@@ -207,14 +207,14 @@ export function ContactIntelligent() {
             <TiltCard maxTilt={4} className="w-full">
               <form
                 onSubmit={handleSubmit}
-                className="p-8 sm:p-10 rounded-3xl glass-panel border border-white/10 space-y-6"
+                className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl glass-panel border border-white/10 space-y-5 sm:space-y-6"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {/* Name Input */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <label
                       htmlFor="contact-name"
-                      className="block font-mono text-xs uppercase tracking-wider text-slate-300"
+                      className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-slate-300"
                     >
                       Your Name / Organization
                     </label>
@@ -225,15 +225,15 @@ export function ContactIntelligent() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Alex Mercer"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-sm placeholder:text-slate-600 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-base placeholder:text-slate-600 outline-none transition-all"
                     />
                   </div>
 
                   {/* Email Input */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <label
                       htmlFor="contact-email"
-                      className="block font-mono text-xs uppercase tracking-wider text-slate-300"
+                      className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-slate-300"
                     >
                       Email Address
                     </label>
@@ -244,25 +244,25 @@ export function ContactIntelligent() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="alex@enterprise.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-sm placeholder:text-slate-600 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-base placeholder:text-slate-600 outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Timeline Choice */}
-                <div className="space-y-2">
-                  <label className="block font-mono text-xs uppercase tracking-wider text-slate-300">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-slate-300">
                     Project / Hiring Timeline
                   </label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {['Immediate', '1 - 3 Months', 'Exploring Options'].map((t) => (
                       <button
                         key={t}
                         type="button"
                         onClick={() => setTimeline(t)}
-                        className={`py-2 px-3 rounded-xl text-xs font-mono transition-all border ${
+                        className={`py-2.5 px-3 rounded-xl text-xs font-mono transition-all border active:scale-95 ${
                           timeline === t
-                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-bold'
                             : 'bg-white/[0.02] text-slate-400 border-white/5 hover:text-white'
                         }`}
                       >
@@ -273,10 +273,10 @@ export function ContactIntelligent() {
                 </div>
 
                 {/* Message Textarea */}
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   <label
                     htmlFor="contact-message"
-                    className="block font-mono text-xs uppercase tracking-wider text-slate-300"
+                    className="block font-mono text-[11px] sm:text-xs uppercase tracking-wider text-slate-300"
                   >
                     Project Details / Requirement
                   </label>
@@ -287,7 +287,7 @@ export function ContactIntelligent() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder={`Describe your vision for ${selectedType.toLowerCase()}...`}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-sm placeholder:text-slate-600 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 focus:border-cyan-400 text-white text-base placeholder:text-slate-600 outline-none transition-all resize-none"
                   />
                 </div>
 

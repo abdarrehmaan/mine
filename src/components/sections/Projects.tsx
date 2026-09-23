@@ -62,7 +62,7 @@ export function Projects() {
         )}
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 mb-8 sm:mb-12 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -70,7 +70,7 @@ export function Projects() {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border ${
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-mono tracking-wider transition-all duration-200 border flex-shrink-0 active:scale-95 ${
                   isSelected
                     ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.2)]'
                     : 'bg-white/[0.03] text-slate-400 border-white/5 hover:text-white hover:bg-white/[0.06]'
@@ -85,7 +85,7 @@ export function Projects() {
         {/* Project Cards Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -100,7 +100,7 @@ export function Projects() {
                 <TiltCard maxTilt={7} className="h-full">
                   <div
                     onClick={() => handleCardClick(project)}
-                    className="p-6 sm:p-7 rounded-2xl glass-panel glass-panel-hover h-full flex flex-col justify-between group cursor-pointer"
+                    className="p-5 sm:p-7 rounded-2xl glass-panel glass-panel-hover h-full flex flex-col justify-between group cursor-pointer"
                   >
                     <div>
                       {/* Top Row: Category + Links */}

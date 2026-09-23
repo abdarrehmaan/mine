@@ -44,7 +44,7 @@ export function LiveCodeLab() {
         />
 
         {/* Snippet Selection Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 sm:gap-3 mb-6 sm:mb-8 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
           {CODE_LAB_SNIPPETS.map((snippet) => {
             const isSelected = selectedSnippet.id === snippet.id;
             return (
@@ -56,7 +56,7 @@ export function LiveCodeLab() {
                   setOutput('');
                   setShowAIExplanation(false);
                 }}
-                className={`px-4 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-semibold transition-all duration-200 border flex items-center gap-2 ${
+                className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-mono text-xs sm:text-sm font-semibold transition-all duration-200 border flex items-center gap-2 flex-shrink-0 active:scale-95 ${
                   isSelected
                     ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.2)]'
                     : 'bg-white/[0.03] text-slate-400 border-white/5 hover:text-white hover:bg-white/[0.06]'
@@ -72,9 +72,9 @@ export function LiveCodeLab() {
         </div>
 
         {/* Code Lab Workspace Window */}
-        <div className="rounded-3xl glass-panel border border-white/10 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.7)]">
+        <div className="rounded-2xl sm:rounded-3xl glass-panel border border-white/10 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.7)]">
           {/* Top IDE Toolbar */}
-          <div className="px-6 py-4 border-b border-white/10 bg-white/[0.02] flex flex-wrap items-center justify-between gap-4">
+          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-white/10 bg-white/[0.02] flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               {/* Traffic Light Dots */}
               <div className="flex items-center gap-1.5">
